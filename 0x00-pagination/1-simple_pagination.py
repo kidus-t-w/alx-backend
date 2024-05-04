@@ -43,17 +43,19 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        Retrieves a page of data from the dataset based on the given page number and page size.
+        Retrieves a page of data from the dataset based
+        on the given page number and page size.
 
         Args:
             page (int, optional): The page number to retrieve. Defaults to 1.
-            page_size (int, optional): The number of items per page. Defaults to 10.
+            page_size (int, optional): The number of items per page.
 
         Returns:
             List[List]: A list containing the data for the specified page.
 
         Raises:
-            AssertionError: If the page number or page size is not a positive integer.
+            AssertionError: If the page number or page size is
+            not a positive integer.
         """
         assert isinstance(page, int) and page > 0, \
             "Page must be a positive integer"

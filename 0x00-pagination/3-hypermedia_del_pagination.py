@@ -41,15 +41,7 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """
-        Returns a dictionary containing the index, data, page_size, and next_index for a given index and page_size.
-        The index is the starting index of the current page. The page_size is the number of items required in the current page.
-        The data is a list of lists containing the data for the specified page. The next_index is the index of the next page.
-        If the next_index is None, it means there are no more pages.
-        
-        :param index: An integer representing the starting index of the current page. Defaults to None.
-        :param page_size: An integer representing the number of items required in the current page. Defaults to 10.
-        :return: A dictionary containing the index, data, page_size, and next_index.
-        :rtype: dict
+        Returns a dictionary with index, data, page_size, and next_index for the given index and page_size.
         """
        
         focus = []

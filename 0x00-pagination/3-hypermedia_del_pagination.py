@@ -41,7 +41,8 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """
-        Returns a dictionary with index, data, page_size, and next_index for the given index and page_size.
+        Returns a dictionary with index, data, page_size, and next_index for
+        the given index and page_size.
         """
        
         focus = []

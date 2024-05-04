@@ -44,7 +44,7 @@ class Server:
         Returns a dictionary with index, data, page_size, and next_index for
         the given index and page_size.
         """
-       
+
         focus = []
         dataset = self.indexed_dataset()
         index = 0 if index is None else index

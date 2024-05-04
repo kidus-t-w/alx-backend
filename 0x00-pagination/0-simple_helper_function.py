@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""0-simple_helper_function.py"""
+"""Calculate the range of indices for pagination."""
 
 from typing import Tuple
 

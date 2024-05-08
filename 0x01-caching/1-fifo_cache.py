@@ -19,7 +19,7 @@ class FIFOCache(BaseCaching):
         if key is not None and item is not None:
             if key in self.cache_data and self.cache_data[key] != item:
                 self.cache_data[key] = item
-            
+
             elif (len(self.cache_data) == BaseCaching.MAX_ITEMS):
                 key_to_remove = list(self.cache_data.keys())[0]
                 self.cache_data.pop(key_to_remove)

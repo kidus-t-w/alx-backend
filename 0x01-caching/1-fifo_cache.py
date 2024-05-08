@@ -24,10 +24,9 @@ class FIFOCache(BaseCaching):
             if key in self.cache_data and self.cache_data[key] != item:
                 self.cache_data[key] = item
 
-            elif (len(self.cache_data) >= BaseCaching.MAX_ITEMS):
-                key_to_remove = list(self.cache_data.keys())[0]
-                self.cache_data.pop(key_to_remove)
-                print("DISCARD:{}".format(key_to_remove))
+            elif (len(self.cache_data) == BaseCaching.MAX_ITEMS):
+                first_key, _ = self.cache_data.popitem(last=False)
+                print("DISCARD:{}".format(first_key))
                 self.cache_data[key] = item
             else:
                 self.cache_data[key] = item

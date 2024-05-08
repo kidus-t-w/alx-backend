@@ -17,14 +17,17 @@ class FIFOCache(BaseCaching):
         Add item in the cache
         """
         if key is not None and item is not None:
-            if (len(self.cache_data) == super.MAX_ITEMS):
-                self.cache_data.popitem()
-                print("DISCARD:{}".format(self.key))
+            if (len(self.cache_data) == BaseCaching.MAX_ITEMS):
+                key_to_remove = list(self.cache_data.keys())[0]
+                self.cache_data.pop(key_to_remove)
+                print("DISCARD:{}".format(key_to_remove))
             self.cache_data[key] = item
 
     def get(self, key):
         """
         Return item form the cache
         """
-        if key is not self.cache_data and key in self.cache_data:
+        if key is None and key not in self.cache_data:
+            return None
+        if key in self.cache_data:
             return self.cache_data[key]

@@ -16,20 +16,18 @@ class FIFOCache(BaseCaching):
         """
         super().__init__()
         self.cache_data = OrderedDict()
+
     def put(self, key, item):
         """
         Add item in the cache
         """
-        if key is not None and item is not None:
-            if key in self.cache_data and self.cache_data[key] != item:
-                self.cache_data[key] = item
+        if key is None or item is None:
+            return
+        self.cache_data[key] = item
 
-            elif (len(self.cache_data) == BaseCaching.MAX_ITEMS):
-                first_key, _ = self.cache_data.popitem(last=False)
-                print("DISCARD:{}".format(first_key))
-                self.cache_data[key] = item
-            else:
-                self.cache_data[key] = item
+        if (len(self.cache_data) > BaseCaching.MAX_ITEMS):
+            first_key, _ = self.cache_data.popitem(last=False)
+            print("DISCARD:{}".format(first_key))
 
     def get(self, key):
         """

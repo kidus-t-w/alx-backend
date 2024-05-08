@@ -7,11 +7,9 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 
 class FIFOCache(BaseCaching):
-    def __init__(self):
-        """ Initiliaze
-        """
-        self.cache_data = {}
-
+    """
+    FIFOCache system
+    """
     def put(self, key, item):
         """
         Add item in the cache
@@ -24,7 +22,9 @@ class FIFOCache(BaseCaching):
                 key_to_remove = list(self.cache_data.keys())[0]
                 self.cache_data.pop(key_to_remove)
                 print("DISCARD:{}".format(key_to_remove))
-            self.cache_data[key] = item
+                self.cache_data[key] = item
+            else:
+                self.cache_data[key] = item
 
     def get(self, key):
         """

@@ -30,4 +30,4 @@ class FIFOCache(BaseCaching):
     def get(self, key):
         """Retrieves an item by key.
         """
-        return self.cache_data[key]
+        return self.cache_data.get(key, None)

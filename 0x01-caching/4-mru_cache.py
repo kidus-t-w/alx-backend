@@ -20,7 +20,7 @@ class MRUCache(BaseCaching):
         """
         if key is None or item is None:
             return
-        if key not in self.cache_data and item is None:
+        if key not in self.cache_data and item is not None:
             if len(self.cache_data) < BaseCaching.MAX_ITEMS:
                 removed, _ = self.cache_data.popitem(True)
                 print("DESTROYED:", removed)

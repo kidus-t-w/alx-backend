@@ -3,6 +3,7 @@
 FIFO cache system
 """
 
+from collections import OrderedDict
 BaseCaching = __import__('base_caching').BaseCaching
 
 
@@ -10,6 +11,11 @@ class FIFOCache(BaseCaching):
     """
     FIFOCache system
     """
+    def __init__(self):
+        """Initializes the cache.
+        """
+        super().__init__()
+        self.cache_data = OrderedDict()
     def put(self, key, item):
         """
         Add item in the cache
@@ -18,7 +24,7 @@ class FIFOCache(BaseCaching):
             if key in self.cache_data and self.cache_data[key] != item:
                 self.cache_data[key] = item
 
-            elif (len(self.cache_data) == BaseCaching.MAX_ITEMS):
+            elif (len(self.cache_data) >= BaseCaching.MAX_ITEMS):
                 key_to_remove = list(self.cache_data.keys())[0]
                 self.cache_data.pop(key_to_remove)
                 print("DISCARD:{}".format(key_to_remove))

@@ -7,9 +7,14 @@ from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
-    """Represents an object that allows storing and
-    retrieving items from a dictionary with a LIFO
-    removal mechanism when the limit is reached.
+    """Last-In First-Out (LIFO) caching system.
+
+    This class implements a Last-In First-Out (LIFO) caching system. It keeps
+    track of the most recently used items in the cache. When the cache is full,
+    the least recently used item is discarded to make room for the new item.
+
+    It is a subclass of BaseCaching, so it inherits its constants and methods
+    (print_cache, get, put).
     """
     def __init__(self):
         """Initializes the cache.
@@ -18,7 +23,8 @@ class LIFOCache(BaseCaching):
         self.cache_data = OrderedDict()
 
     def put(self, key, item):
-        """Adds an item in the cache.
+        """Add an item in the cache.
+            Removes the oldest item in the cache
         """
         if key is None or item is None:
             return

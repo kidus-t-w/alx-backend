@@ -27,22 +27,25 @@ babel = Babel(app)
 
 @babel.localeselector
 def get_locale():
+    """returns a user dictionary or None if the ID cannot be found
     """
-    Select and return appropriate locale
+    locale = request.args.get('locale')
+    if locale in app.config['LANGUAGES']:
+        print(locale)
+        return locale
 
-    Returns:
-        str: Locale code
-    """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/')
 def index():
     """
-    Renders the index page.
+    Executes before each request.
+
+    Retrieves the user associated with the request and stores it in the global context.
 
     Returns:
-        HTML: The rendered index page.
+        None
     """
     return render_template('3-index.html')
 

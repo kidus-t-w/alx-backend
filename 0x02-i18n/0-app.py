@@ -5,6 +5,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+    """
+    Renders the index page.
+
+    Returns:
+        HTML: The rendered index page.
+    """
     return render_template('0-index.html')
 
 if __name__ == "__main__":

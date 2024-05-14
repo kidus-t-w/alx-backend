@@ -3,6 +3,11 @@ from flask import Flask, render_template, request
 from flask_babel import Babel
 
 class Config:
+    """Config class for Flask app
+
+    This class defines the configuration for the Flask app. It includes
+    the supported languages, the default locale, and the default timezone.
+    """
     LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
@@ -13,11 +18,23 @@ babel = Babel(app)
 
 @babel.localeselector
 def get_locale():
+    """
+    Select and return appropriate locale
+
+    Returns:
+        str: Locale code
+    """
     return request.accept_languages
 
 
 @app.route('/')
 def home():
+    """
+    Renders the index page.
+
+    Returns:
+        HTML: The rendered index page.
+    """
     return render_template('2-index.html')
 
 if __name__ == "__main__":

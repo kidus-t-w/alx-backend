@@ -95,18 +95,18 @@ def get_timezone():
     Select and return appropriate timezone
     """
     # Find timezone parameter in URL parameters
-    tzone = request.args.get('timezone', None)
-    if tzone:
+    t_zone = request.args.get('timezone', None)
+    if t_zone:
         try:
-            return timezone(tzone).zone
+            return timezone(t_zone).zone
         except pytz.exceptions.UnknownTimeZoneError:
             pass
     
     # Find time zone from user settings
     if g.user:
         try:
-            tzone = g.user.get('timezone')
-            return timezone(tzone).zone
+            t_zone = g.user.get('timezone')
+            return timezone(t_zone).zone
         except pytz.exceptions.UnknownTimeZoneError:
             pass
     

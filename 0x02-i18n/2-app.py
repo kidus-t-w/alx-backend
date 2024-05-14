@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
+"""
+A simple flask app
+"""
 from flask import Flask, render_template, request
 from flask_babel import Babel
+
 
 class Config:
     """Config class for Flask app
@@ -12,9 +16,11 @@ class Config:
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
+
 app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel(app)
+
 
 @babel.localeselector
 def get_locale():
@@ -24,7 +30,7 @@ def get_locale():
     Returns:
         str: Locale code
     """
-    return request.accept_languages
+    return request.accept_languages.best_match(Config.LANGUAGES)
 
 
 @app.route('/')
@@ -36,6 +42,7 @@ def home():
         HTML: The rendered index page.
     """
     return render_template('2-index.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
